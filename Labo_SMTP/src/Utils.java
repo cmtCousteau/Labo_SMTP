@@ -1,5 +1,7 @@
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,10 +18,21 @@ import java.util.logging.Logger;
  */
 public class  Utils {
     
-    
-    public static void sendMail(Mail mail){
-    
+    public static String readMessage(BufferedReader in){
+        String strToReturn = "";
+        try {
+            strToReturn = in.readLine();
+        } catch (IOException ex) {
+            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        return strToReturn;
+    }
+    
+    
+    public static void sendMessage(PrintWriter out, String message){
+        out.println(message);
+        out.flush();
     }  
     
     public static void closeConnexion(Socket socket){
@@ -33,7 +46,7 @@ public class  Utils {
     }
     
     
-    public static Socket connexion(String host, int port){
+    public static Socket openConnexion(String host, int port){
         
         Socket clientSocket = null;
 
