@@ -1,8 +1,11 @@
+package src;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,6 +60,11 @@ public class  Utils {
         }
         
         return clientSocket;
+    }
+    
+    public static int getRandomNumber(int maxValue){
+        Random randomGenerator = new Random();
+        return randomGenerator.nextInt(maxValue);
     }
     
 }

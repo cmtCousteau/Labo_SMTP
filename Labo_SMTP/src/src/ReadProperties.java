@@ -1,3 +1,5 @@
+package src;
+
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,17 +30,13 @@ public class ReadProperties {
     
     private void openConfig(String propertiesFileName){
         properties = new Properties();
-        InputStream inputStream;
-        
+        InputStream propertiesInputStream = getClass().getClassLoader().getResourceAsStream("config.properties");
+       
         try {
-            inputStream = new FileInputStream(propertiesFileName);
-            properties.load(inputStream);
-            
-        } catch (IOException  ex) {
+            properties.load(propertiesInputStream);
+        } catch (IOException ex) {
             Logger.getLogger(ReadProperties.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        properties.getProperty("smtpServerAdress");
     }
     
     public String getSmtpServerAdress(){
@@ -47,6 +45,10 @@ public class ReadProperties {
     
     public int getSmtpServerPort(){
         return Integer.parseInt(properties.getProperty("smtpServerport"));
+    }
+    
+    public String getMailListFilePath(){
+        return properties.getProperty("mailFilePath");
     }
     
 }
