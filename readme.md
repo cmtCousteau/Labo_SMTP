@@ -14,6 +14,7 @@ You have 3 files of config wich you can edit.
 
 The first one (config.properties) contain the port of the SMPT server you want to use,
 the hostname of the server and finaly the numbers of groups you want.
+
 ![alt text](/images/config.png "File 1")
 
 The second file(victims.txt) contain the list of the victims mail adresses. You need to put one adress by line.
