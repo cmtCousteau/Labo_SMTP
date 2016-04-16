@@ -32,3 +32,6 @@ Or you can download the .jar file here : https://github.com/tweakers-dev/MockMoc
 Once you have download it, use it is very simple. To start the server you shoud use the command : ```java -jar MockMock.jar```
 By default the server listen on the port 25, and the hosthame is obviously *localhost*.
 The HTML server from where you can see your mail is running by default on the port 8282. To acced it use this URL : *http://localhost:8282/*
+
+If you want to change the default port you can use this command to start the mock server : ```java -jar MockMock.jar -p 25000 -h 8080```.
+*-p* define the SMTP server port and *-h* define the HTML server port.
