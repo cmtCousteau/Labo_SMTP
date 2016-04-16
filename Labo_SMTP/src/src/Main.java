@@ -1,28 +1,11 @@
 package src;
 
-
 import mail.Mail;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import mail.Group;
+import mail.Message;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author marco
- */
 public class Main {
 
     
@@ -34,30 +17,56 @@ public class Main {
         
         //String separator = File.separator;
         List<String> mailList;
-        List<String> mailToList;
-        String mailListPath;
-        String serverAdress;
-        int serverPort;
-        
-	InputStream input = null;
+        List<Group> groupList;
+        List<Message> messageList;
 
-        ReadProperties properties = new ReadProperties("config.properties");
-        mailListPath = properties.getMailListFilePath();
+        int numberOfGroups;
+        int groupSize;
+        int messageIndex;
+        Group group;
+        SmtpServer smtp;
+
+        ReadProperties properties = new ReadProperties();
+        mailList = ReadMails.readMailList();
+
+        numberOfGroups = properties.getNumberOfGroups();
+        groupSize = mailList.size() / numberOfGroups;
         
-        mailList = ReadFiles.readMailList("E:/Ecole/RES/Labo_SMTP/mailList.txt");
+        groupList = new ArrayList();
+        // Test if the number of group is OK with the number of mail adresses.
+        if(groupSize >= 3){
+            for(int i = 0; i < numberOfGroups; i++){
+                // If we are at the end we put all the remaining mail in the last group.
+                if(i == numberOfGroups-1){
+                    group = new Group(mailList.subList(groupSize*i, mailList.size()));
+                }
+                else{
+                    group = new Group(mailList.subList(groupSize*i, groupSize*(i+1)));
+                }
+                groupList.add(group);
+            }
+        }
         
+        // Get the list of prank message from the file.
+        messageList = ReadMessages.readMessage();
         
+        // Get the adress and the port of the SMTP server from the config file.
+
+        smtp = new SmtpServer(properties.getSmtpServerAdress(),properties.getSmtpServerPort());
+        smtp.openConnexion();
+           
+        // Parse all the groups in the list, create a message from a random prank,
+        // and create the mail, and finaly send the mail.
+        for(Group g : groupList){
+            // Get a random index number to select the message to send.
+            messageIndex = Utils.getRandomNumber(messageList.size());
+            // Create a new mail.
+            Mail mail = new Mail(g, messageList.get(messageIndex));
+            // Send the mail.
+            //mail.sendMail(socket);
+            smtp.sendMail(mail);
+        }
         
-        
-        serverAdress = properties.getSmtpServerAdress();
-        serverPort = properties.getSmtpServerPort();
-        
-       // Socket socket = Utils.openConnexion("smtp.heig-vd.ch", 25);
-        Socket socket = Utils.openConnexion(serverAdress, serverPort);
-        Mail mail = new Mail("anastasia.zharkova@heig-vd.ch","anastasia.zharkova@heig-vd.ch","Anastasia Zharkova","Anastasia Zharkova","pizza","Je mange de la pizza");
-        mail.sendMail(socket);
-        
-        
+        smtp.closeConnexion();
     }
-    
 }

@@ -32,9 +32,8 @@ public class  Utils {
         return strToReturn;
     }
     
-    
     public static void sendMessage(PrintWriter out, String message){
-        out.println(message);
+        out.write(message);
         out.flush();
     }  
     

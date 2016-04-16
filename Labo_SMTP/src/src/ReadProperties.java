@@ -1,37 +1,39 @@
+/**
+ * @author Monzione Marco, Anastasia Zharkova
+ * 
+ * File : ReadProperties.java
+ * 
+ * Purpose : The purpose of this class is to provide an access to the config file
+ * and allow the user to get the values of the properties set in the file.
+ * 
+ */
+
+
+
 package src;
 
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author marco
- */
 public class ReadProperties {
     
     private Properties properties;
     
     
-    public ReadProperties(String propertiesFileName){
-        openConfig(propertiesFileName);
+    public ReadProperties(){
+        openConfig();
     }
     
-    private void openConfig(String propertiesFileName){
+    private void openConfig(){
         properties = new Properties();
-        InputStream propertiesInputStream = getClass().getClassLoader().getResourceAsStream("config.properties");
-       
+        
+        // Open the file wich contain the properties of the programm.
+        // I have no idea of what im doing.
+        InputStream propertiesInputStream = getClass().getClassLoader().getResourceAsStream("conf.properties");
+        
         try {
             properties.load(propertiesInputStream);
         } catch (IOException ex) {
@@ -49,6 +51,9 @@ public class ReadProperties {
     
     public String getMailListFilePath(){
         return properties.getProperty("mailFilePath");
+    }
+    public int getNumberOfGroups(){
+        return Integer.parseInt(properties.getProperty("numberOfgroups"));
     }
     
 }

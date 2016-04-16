@@ -5,6 +5,7 @@
  */
 package mail;
 
+import java.util.ArrayList;
 import java.util.List;
 import src.Utils;
 
@@ -15,23 +16,29 @@ import src.Utils;
 public class Group {
     
     private String sender;
-    private List<String> victim;
-    
+    private List<String> victimList;
+
     public Group(List<String> mailList){
-        this.sender = sender;
-        this.victim = victim;
+        // Choose randomly a sender in the list.
+        int senderIndex = Utils.getRandomNumber(mailList.size());
+        // Set the sender and remove it from the list.
+        this.sender = mailList.get(senderIndex);
+        // Parse the mails list and put all the mails thoose are not the sender
+        // into the victims list.
+        // I work with index to avoid problem if some mail are duplicated.
+        victimList = new ArrayList();
+        for(int i = 0; i < mailList.size(); i++){
+            if(i != senderIndex){
+                victimList.add(mailList.get(i));
+            }
+        }
     }
-    private String selectSender(List<String> mailList){
-      
-        //mailList.at(Utils.getRandomNumber(mailList.size()));
-        return "";
-    };
     
     public String getSender(){
         return sender;
     }
     public List<String> getVictimList(){
-        return victim;
+        return victimList;
     }
     
 }
