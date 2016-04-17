@@ -15,7 +15,7 @@ You have 3 files of config wich you can edit.
 The first one (config.properties) contain the port of the SMTP server you want to use,
 the hostname of the server and finaly the numbers of groups you want. Dont forget that the minimum size of group
 is 3 (2 victims 1 sender), so when you set the number of groups be sure it's match with the number of mails, otherwise
-the programm will not work. 
+the program will not work. 
 
 ![config.png](/figures/config.png "File 1")
 
@@ -27,6 +27,8 @@ And the last file(messages.txt) contain the message to send. A message always be
 of the message. The message is ended by ":::".
 
 ![messages.png](/figures/messages.png "File 3")
+
+And now you can just run the program and it will send the mails.
 
 How it's work
 -------------
