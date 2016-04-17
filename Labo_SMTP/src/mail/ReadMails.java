@@ -45,7 +45,9 @@ public class ReadMails {
         try {
             // Read line by line and put it in a list of strings.
             while ((line=bufferedReader.readLine())!=null){
-                mailList.add(line);
+                if(!line.equalsIgnoreCase("")){
+                    mailList.add(line);
+                }
             }
             bufferedReader.close();
         } catch (IOException ex) {

@@ -12,7 +12,7 @@ How to use
 Once you have downloaded the project it must be really simple to use it.
 You have 3 files of config wich you can edit.
 
-The first one (config.properties) contain the port of the SMPT server you want to use,
+The first one (config.properties) contain the port of the SMTP server you want to use,
 the hostname of the server and finaly the numbers of groups you want. Dont forget that the minimum size of group
 is 3 (2 victims 1 sender), so when you set the number of groups be sure it's match with the number of mails, otherwise
 the programm will not work. 
@@ -70,6 +70,9 @@ shoud match with the number of mails to have at minimum groups of 3 people).
 After that we get the list of *Message* and open the connexion to the SMTP server (TCP and telnet).
 And finaly for each group we create a *Mail*, choose a random prank message and send it to the victims of the *Group* from the sender of the *Group*.
 For finish we close the connexion(Telnet and TCP).
+
+**Ilustration how the application dialogue with the SMTP server:**
+![dialogue.png](/figures/dialogue.png "File 3")
 
 Mock server
 -------------
