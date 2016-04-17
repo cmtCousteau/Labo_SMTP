@@ -13,14 +13,20 @@ Once you have downloaded the project it must be really simple to use it.
 You have 3 files of config wich you can edit.
 
 The first one (config.properties) contain the port of the SMPT server you want to use,
-the hostname of the server and finaly the numbers of groups you want.
+the hostname of the server and finaly the numbers of groups you want. Dont forget that the minimum size of group
+is 3 (2 victims 1 sender), so when you set the number of groups be sure it's match with the number of mails, otherwise
+the programm will not work. 
 
-![alt text](/figures/config.png "File 1")
+![config.png](/figures/config.png "File 1")
 
 The second file(victims.txt) contain the list of the victims mail adresses. You need to put one adress by line.
 
+![victims.png](/figures/victims.png "File 2")
+
 And the last file(messages.txt) contain the message to send. A message always begin with a subjet, an empty line and the content
 of the message. The message is ended by ":::".
+
+![messages.png](/figures/messages.png "File 3")
 
 How it's work
 -------------
@@ -55,7 +61,7 @@ This class is responsible of the connexion to the SMTP server and to send *Mail*
 **Utils.java:**
 This class contain some utilities functions, like opening a socket of sending/reading a message to/from a socket.
 
-At first we get a *Properties* the read the server hostname and port further. Next we create a list of *String* and get the
+At first we get a *Properties* object to read the server hostname and port further. Next we create a list of *String* and get the
 list of all the victims adresses. After that we create a list of *Group* and split the mails list into it if it's possible(the number of group
 shoud match with the number of mails to have at minimum groups of 3 people).
 After that we get the list of *Message* and open the connexion to the SMTP server (TCP and telnet).
