@@ -62,8 +62,11 @@ This class is responsible of the connexion to the SMTP server and to send *Mail*
 This class contain some utilities functions, like opening a socket of sending/reading a message to/from a socket.
 
 At first we get a *Properties* object to read the server hostname and port further. Next we create a list of *String* and get the
-list of all the victims adresses. After that we create a list of *Group* and split the mails list into it if it's possible(the number of group
+list of all the victims adresses.
+
+After that we create a list of *Group* and split the mails list into it if it's possible(the number of group
 shoud match with the number of mails to have at minimum groups of 3 people).
+
 After that we get the list of *Message* and open the connexion to the SMTP server (TCP and telnet).
 And finaly for each group we create a *Mail*, choose a random prank message and send it to the victims of the *Group* from the sender of the *Group*.
 For finish we close the connexion(Telnet and TCP).
