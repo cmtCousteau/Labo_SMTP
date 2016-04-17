@@ -10,7 +10,7 @@
  * 
  */
 
-package src;
+package mail;
 
 
 import java.io.BufferedReader;
