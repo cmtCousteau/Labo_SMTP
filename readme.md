@@ -29,7 +29,7 @@ The application contain 9 classes including the main class.
 Each class has a specific function. I will make a little description of each.
 
 **Group.java:**
-This class is responsible of making a group of victims.
+This class is responsible of making a group of victims and to choose randomly a sender from the victims.
 
 **Mail.java:**
 This class contain all the information about the mail that we will send.
@@ -41,10 +41,26 @@ This class contain the infos about the content of the mail. the subject and the 
 This static class read the mail adresses of the victims from the file *victims.txt* and return a list of all the mail.
 
 **ReadMessage.java:**
-This static class read the prank message from the file *conf.properties* and return a list of *Message*
+This static class read the prank message from the file *messages.txt* and return a list of *Message*
 
 **Main.java:**
 It's the main class and use all the other classes to send the prank mails.
+
+**ReadProperties:**
+This class read the config informations from the file *conf.properties*, like the server hostname and the port.
+
+**SmtpServer.java:**
+This class is responsible of the connexion to the SMTP server and to send *Mail*.
+
+**Utils.java:**
+This class contain some utilities functions, like opening a socket of sending/reading a message to/from a socket.
+
+At first we get a *Properties* the read the server hostname and port further. Next we create a list of *String* and get the
+list of all the victims adresses. After that we create a list of *Group* and split the mails list into it if it's possible(the number of group
+shoud match with the number of mails to have at minimum groups of 3 people).
+After that we get the list of *Message* and open the connexion to the SMTP server (TCP and telnet).
+And finaly for each group we create a *Mail*, choose a random prank message and send it to the victims of the *Group* from the sender of the *Group*.
+For finish we close the connexion(Telnet and TCP).
 
 Mock server
 -------------
