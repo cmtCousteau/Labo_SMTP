@@ -28,22 +28,22 @@ How it's work
 The application contain 9 classes including the main class.
 Each class has a specific function. I will make a little description of each.
 
-#####Group.java
+**Group.java:**
 This class is responsible of making a group of victims.
 
-#####Mail.java
+**Mail.java:**
 This class contain all the information about the mail that we will send.
 
-#####Message.java
+**Message.java:**
 This class contain the infos about the content of the mail. the subject and the content.
 
-#####ReadMails.java
+**ReadMails.java:**
 This static class read the mail adresses of the victims from the file *victims.txt* and return a list of all the mail.
 
-#####ReadMessage.java
+**ReadMessage.java:**
 This static class read the prank message from the file *conf.properties* and return a list of *Message*
 
-#####Main.java
+**Main.java:**
 It's the main class and use all the other classes to send the prank mails.
 
 Mock server
