@@ -1,12 +1,3 @@
-bob@gmail.com
-jean@gmail.com
-alice@yahoo.com
-michel@msn.com
-
-
-
-
-
-manuel@hotmail.fr
-benoit@yahoo.com
-lisa@msn.fr
+marco.monzione@heig-vd.ch
+anastasia.zharkova@heig-vd.ch
+marco.mon@windowslive.com

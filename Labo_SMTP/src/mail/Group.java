@@ -1,7 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Monzione Marco, Anastasia Zharkova
+ * 
+ * File : Group.java
+ * 
+ * Purpose : The purpose of this class is to create a object Group containing a
+ * list of victim mail adresses and a sender mail adress.
+ * The sender is randomly choosen in the constructor from the list of mails
+ * received in parameter.
+ * 
  */
 package mail;
 
@@ -9,14 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import src.Utils;
 
-/**
- *
- * @author marco
- */
 public class Group {
     
-    private String sender;
-    private List<String> victimList;
+    private final String sender;
+    private final List<String> victimList;
 
     public Group(List<String> mailList){
         // Choose randomly a sender in the list.

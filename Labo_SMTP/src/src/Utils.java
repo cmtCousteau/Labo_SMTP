@@ -1,3 +1,14 @@
+/**
+ * @author Monzione Marco, Anastasia Zharkova
+ * 
+ * File : Utils.java
+ * 
+ * Purpose : The purpose of this class is to provide some utilies functions, like
+ * generating a random number beetween a range or sending/reading a message to/from
+ * a socket and opening/closing a TCP connexion.
+ * 
+ */
+
 package src;
 
 
@@ -9,16 +20,6 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author marco
- */
 public class  Utils {
     
     public static String readMessage(BufferedReader in){

@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Monzione Marco, Anastasia Zharkova
+ * 
+ * File : SmtpServer.java
+ * 
+ * Purpose : The purpose of this class is to open/close the connexion with
+ * the SMTP server, both TCP and "telnet" connexion. This class also send the mail
+ * using functions in Utils.java
+ * 
  */
 package src;
 
@@ -15,17 +20,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import mail.Mail;
 
-/**
- *
- * @author marco
- */
 public class SmtpServer {
     
     private PrintWriter out;
     private BufferedReader in;
     private Socket socket;
-    private String hostName;
-    private int port;
+    private final String hostName;
+    private final int port;
     
     String NEW_LINE = System.getProperty("line.separator");
     
@@ -37,6 +38,8 @@ public class SmtpServer {
         in = null;
     }
     
+    // This method open the TCP connexion and next open the "telnet" connexion.
+    // This method create too the read/write buffer.
     public void openConnexion(){
 
         String strTmp;
@@ -53,8 +56,10 @@ public class SmtpServer {
         // Wait for the "connexion" to be etablished.
         System.out.println(Utils.readMessage(in));
         Utils.sendMessage(out, "EHLO Marco" + NEW_LINE);
+        
+        // Wait until all the "welcom" message are received and the server
+        // send "250" followed by an empty space.
         while (true) {
-
             strTmp = Utils.readMessage(in);
             System.out.println(strTmp);
 
@@ -63,10 +68,10 @@ public class SmtpServer {
             }
         }
     }
-    
+    // Close the "telnet" connexion and the TCP connexion.
     public void closeConnexion(){
         Utils.sendMessage(out, "quit");
-        System.out.println(Utils.readMessage(in));
+        //System.out.println(Utils.readMessage(in));
         Utils.closeConnexion(socket); 
     }
     
