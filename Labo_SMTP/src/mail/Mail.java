@@ -27,7 +27,7 @@ public class Mail {
         CONTENT = message.getContent();
     }
     
-    public String getFrom(){
+    public String getSender(){
         return SENDER;
     }
     public List<String> getRcpt(){

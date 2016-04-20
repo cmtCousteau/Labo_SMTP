@@ -63,6 +63,9 @@ This class is responsible of the connexion to the SMTP server and to send *Mail*
 **Utils.java:**
 This class contain some utilities functions, like opening a socket of sending/reading a message to/from a socket.
 
+Here is the UML diagramme :
+![uml.png](/figures/uml.png "File 4")
+
 At first we get a *Properties* object to read the server hostname and port further. Next we create a list of *String* and get the
 list of all the victims adresses.
 

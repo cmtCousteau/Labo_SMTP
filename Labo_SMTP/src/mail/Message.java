@@ -15,18 +15,18 @@ package mail;
  */
 public class Message {
     
-    private String subject;
-    private String content;
+    private final String SUBJECT;
+    private final String CONTENT;
     
     public Message(String subject, String content){
-        this.subject = subject;
-        this.content = content;
+        this.SUBJECT = subject;
+        this.CONTENT = content;
     }
     
     public String getSubject(){
-        return subject;
+        return SUBJECT;
     }
     public String getContent(){
-        return content;
+        return CONTENT;
     }
 }

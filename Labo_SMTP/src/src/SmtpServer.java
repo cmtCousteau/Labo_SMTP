@@ -79,7 +79,7 @@ public class SmtpServer {
         // Get the list of victims to send the mail.
         List<String> VICTIM_LIST = mail.getRcpt();
         
-        Utils.sendMessage(out, "MAIL FROM: " + mail.getFrom() + NEW_LINE);
+        Utils.sendMessage(out, "MAIL FROM: " + mail.getSender() + NEW_LINE);
         System.out.println(Utils.readMessage(in));
         
         for(String s : VICTIM_LIST){
@@ -89,7 +89,7 @@ public class SmtpServer {
         Utils.sendMessage(out, "DATA" + NEW_LINE);
         System.out.println(Utils.readMessage(in));
         
-        Utils.sendMessage(out, "From:" + mail.getFrom() + NEW_LINE);
+        Utils.sendMessage(out, "From:" + mail.getSender() + NEW_LINE);
         
         for(String s : VICTIM_LIST){
             Utils.sendMessage(out, "To: " + s + NEW_LINE);

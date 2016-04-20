@@ -17,30 +17,30 @@ import src.Utils;
 
 public class Group {
     
-    private final String sender;
-    private final List<String> victimList;
+    private final String SENDER;
+    private final List<String> VICTIM_LIST;
 
     public Group(List<String> mailList){
         // Choose randomly a sender in the list.
         int senderIndex = Utils.getRandomNumber(mailList.size());
         // Set the sender and remove it from the list.
-        this.sender = mailList.get(senderIndex);
+        this.SENDER = mailList.get(senderIndex);
         // Parse the mails list and put all the mails thoose are not the sender
         // into the victims list.
         // I work with index to avoid problem if some mail are duplicated.
-        victimList = new ArrayList();
+        VICTIM_LIST = new ArrayList();
         for(int i = 0; i < mailList.size(); i++){
             if(i != senderIndex){
-                victimList.add(mailList.get(i));
+                VICTIM_LIST.add(mailList.get(i));
             }
         }
     }
     
     public String getSender(){
-        return sender;
+        return SENDER;
     }
     public List<String> getVictimList(){
-        return victimList;
+        return VICTIM_LIST;
     }
     
 }

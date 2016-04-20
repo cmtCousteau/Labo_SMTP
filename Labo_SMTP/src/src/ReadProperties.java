@@ -49,9 +49,6 @@ public class ReadProperties {
         return Integer.parseInt(properties.getProperty("smtpServerport"));
     }
     
-    public String getMailListFilePath(){
-        return properties.getProperty("mailFilePath");
-    }
     public int getNumberOfGroups(){
         return Integer.parseInt(properties.getProperty("numberOfgroups"));
     }
