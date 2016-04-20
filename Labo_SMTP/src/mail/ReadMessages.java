@@ -59,7 +59,7 @@ public class ReadMessages {
                 // if nothing happen before it's just the content of the message.
                 else
                 {
-                    content += line;
+                    content += '\n' + line;
                 }
             }
             br.close();

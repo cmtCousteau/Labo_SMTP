@@ -1,4 +1,14 @@
-    package src;
+/**
+ * @author Monzione Marco, Anastasia Zharkova
+ * 
+ * File : Main.java
+ * 
+ * Purpose : The purpose of this class is to use all other classes and
+ * make prank mails messages and send them to a list of victims.
+ * 
+ */
+
+package src;
 
 import mail.ReadMails;
 import mail.ReadMessages;
@@ -10,14 +20,8 @@ import mail.Message;
 
 public class Main {
 
-    
-    
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         
-        //String separator = File.separator;
         List<String> mailList;
         List<Group> groupList;
         List<Message> messageList;
@@ -51,8 +55,6 @@ public class Main {
         
         // Get the list of prank message from the file.
         messageList = ReadMessages.readMessage();
-        
-        // Get the adress and the port of the SMTP server from the config file.
 
         smtp = new SmtpServer(properties.getSmtpServerAdress(),properties.getSmtpServerPort());
         smtp.openConnexion();
@@ -65,7 +67,6 @@ public class Main {
             // Create a new mail.
             Mail mail = new Mail(g, messageList.get(messageIndex));
             // Send the mail.
-            //mail.sendMail(socket);
             smtp.sendMail(mail);
         }
         

@@ -9,10 +9,6 @@
  */
 package mail;
 
-/**
- *
- * @author marco
- */
 public class Message {
     
     private final String SUBJECT;
