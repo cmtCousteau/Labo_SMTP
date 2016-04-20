@@ -35,7 +35,6 @@ public class ReadMessages {
 
         ipsr = new InputStreamReader(in);
         br = new BufferedReader(ipsr);
-        Message message;
         String subject = "";
         String content = "";
         boolean firstLine = true;

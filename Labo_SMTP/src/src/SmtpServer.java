@@ -28,6 +28,8 @@ public class SmtpServer {
     private final String hostName;
     private final int port;
     
+    private static final Logger LOG = Logger.getLogger(SmtpServer.class.getName());
+    
     String NEW_LINE = System.getProperty("line.separator");
     
     public SmtpServer(String hostName, int port){
@@ -54,14 +56,14 @@ public class SmtpServer {
         }
         // Connect to the SMTP.
         // Wait for the "connexion" to be etablished.
-        System.out.println(Utils.readMessage(in));
-        Utils.sendMessage(out, "EHLO Marco" + NEW_LINE);
+        LOG.info(Utils.readMessage(in));
+        Utils.sendMessage(out, "EHLO Unknow" + NEW_LINE);
         
         // Wait until all the "welcom" message are received and the server
         // send "250" followed by an empty space.
         while (true) {
             strTmp = Utils.readMessage(in);
-            System.out.println(strTmp);
+            LOG.info(strTmp);
 
             if (strTmp.contains("250 ")) {
                 break;
@@ -71,7 +73,6 @@ public class SmtpServer {
     // Close the "telnet" connexion and the TCP connexion.
     public void closeConnexion(){
         Utils.sendMessage(out, "quit");
-        //System.out.println(Utils.readMessage(in));
         Utils.closeConnexion(socket); 
     }
     
@@ -80,14 +81,14 @@ public class SmtpServer {
         List<String> VICTIM_LIST = mail.getRcpt();
         
         Utils.sendMessage(out, "MAIL FROM: " + mail.getSender() + NEW_LINE);
-        System.out.println(Utils.readMessage(in));
+        LOG.info(Utils.readMessage(in));
         
         for(String s : VICTIM_LIST){
             Utils.sendMessage(out, "RCPT TO: " + s + NEW_LINE);
-            System.out.println(Utils.readMessage(in));
+            LOG.info(Utils.readMessage(in));
         }
         Utils.sendMessage(out, "DATA" + NEW_LINE);
-        System.out.println(Utils.readMessage(in));
+        LOG.info(Utils.readMessage(in));
         
         Utils.sendMessage(out, "From:" + mail.getSender() + NEW_LINE);
         
@@ -99,6 +100,6 @@ public class SmtpServer {
         Utils.sendMessage(out, mail.getSubject() + NEW_LINE + NEW_LINE) ;
         // Add the content to the mail and send it.
         Utils.sendMessage(out, mail.getContent() + NEW_LINE + "." + NEW_LINE);
-        System.out.println(Utils.readMessage(in));
+        LOG.info(Utils.readMessage(in));
     }  
 }

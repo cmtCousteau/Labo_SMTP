@@ -15,11 +15,14 @@ import mail.ReadMessages;
 import mail.Mail;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import mail.Group;
 import mail.Message;
 
 public class Main {
-
+    
+    private static final Logger LOG = Logger.getLogger(Main.class.getName());
+    
     public static void main(String[] args) {
         
         List<String> mailList;
@@ -51,6 +54,11 @@ public class Main {
                 }
                 groupList.add(group);
             }
+        }
+        else
+        {
+            LOG.info("Group size is too big !!!");
+            return;
         }
         
         // Get the list of prank message from the file.
